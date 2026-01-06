@@ -5,31 +5,39 @@ import jwt from 'jsonwebtoken'
 
 connect()
 
-async function POST(request: NextRequest) {
+export async function POST(request: NextRequest) {
 
-    const reqBody = await request.json();
-    const { email, password } = reqBody;
+   try {
+      const reqBody = await request.json();
+      const { email, password } = reqBody;
 
-    const user = await User.findOne({email});
+      const user = await User.findOne({ email });
 
-    if (!user) {
-        return NextResponse.json({message : " User doesnt Exist! Please Login"}, {status : 401 })
-    }
+      if (!user) {
+         return NextResponse.json({ message: " User doesnt Exist! Please Signup" }, { status: 401 })
+      }
 
-    const tokenData = {
-        id :user._id,
-        name : user.name,
-        email :user.email,
-       usernam : user.username,
-    }
+      const tokenData = {
+         id: user._id,
+         name: user.name,
+         email: user.email,
+         username: user.username,
+      }
 
-    const token = jwt.sign(tokenData, process.env.TOKEN_PASS!, { expiresIn: '1h' })
-    
-    request.cookies.set("token", token)
+      const token = jwt.sign(tokenData, process.env.TOKEN_PASS!, { expiresIn: '1h' })
 
-    return NextResponse.json({ message : "Logged In Successfully"}, {status : 200})
-    
+      const response = NextResponse.json({ user })
+
+      response.cookies.set("token", token, {
+         httpOnly: true
+      })
+
+      return response;
+
+   } catch (error) {
+      return NextResponse.json("Login Failed in Server", { status: 500 })
+   }
+
 
 }
 
-  

@@ -1,8 +1,21 @@
 'use client'
-import React from 'react'
+import React , {useContext ,useState} from 'react'
 import Link from 'next/link'
+import AuthContext from '@/context/AuthContext'
+
 
 export default function page() {
+
+  const authcont = useContext(AuthContext)
+  const [email,setEmail] = useState<string>("")
+  const [password,setPassword] = useState<string>("")
+  
+  if (!authcont) {
+    throw new Error("Auth context not available")
+  }
+
+  const { login , loading } = authcont;
+
   return (
     <>
       <div className="min-h-screen overflow-hidden bg-gray-50 flex flex-col justify-center py-12 sm:px-6 lg:px-8">
@@ -23,9 +36,7 @@ export default function page() {
 
         <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
           <div className="bg-white py-8 px-4 shadow sm:rounded-lg sm:px-10">
-            
-            <form>
-  
+            <div>
               <div>
                 <label
                   htmlFor="email"
@@ -38,13 +49,14 @@ export default function page() {
                     id="email"
                     name="email"
                     type="email"
+                    onChange={(e)=>{setEmail(e.target.value)}}
                     placeholder="user@example.com"
                     className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md placeholder-gray-400 focus:outline-none focus:ring-emerald-500 focus:border-emerald-500 transition sm:text-sm"
                   />
                 </div>
               </div>
 
-              {/* PASSWORD */}
+          
               <div className="mt-6">
                 <label
                   htmlFor="password"
@@ -58,12 +70,12 @@ export default function page() {
                     name="password"
                     type="password"
                     placeholder="••••••••"
+                    onChange={(e)=>{setPassword(e.target.value)}}
                     className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md placeholder-gray-400 focus:outline-none focus:ring-emerald-500 focus:border-emerald-500 transition sm:text-sm"
                   />
                 </div>
               </div>
 
-              {/* REMEMBER / FORGOT */}
               <div className="mt-6 flex items-center justify-between">
                 <div className="flex items-center">
                   <input
@@ -84,10 +96,10 @@ export default function page() {
                 </div>
               </div>
 
-              {/* SUBMIT */}
               <div className="mt-6">
                 <button
                   type="submit"
+                  onClick={()=>{login(email,password)}}
                   className="w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-emerald-600 hover:bg-emerald-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-emerald-500 transition"
                 >
                   Sign in
@@ -99,14 +111,14 @@ export default function page() {
                 <p className="text-sm text-gray-700">
                   Don&apos;t have an account?{' '}
                   <Link
-                    href="/signup"
+                    href="/auth/signup"
                     className="font-semibold text-emerald-600 hover:text-emerald-500"
                   >
                     Create one
                   </Link>
                 </p>
               </div>
-            </form>
+            </div>
 
           </div>
         </div>

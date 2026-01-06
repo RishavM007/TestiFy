@@ -5,7 +5,7 @@ import bcrypt from 'bcrypt'
 
 connect()
 
-async function POST(request : NextRequest) {
+export async function POST(request : NextRequest) {
     try {
         
         const requestBody = await request.json();
@@ -36,7 +36,7 @@ async function POST(request : NextRequest) {
         
         return NextResponse.json(
             { message: "Signup Failed Due to Database Connection Error : " , error },
-            { status: 404 }
+            { status: 500 }
         )
     }
 }
