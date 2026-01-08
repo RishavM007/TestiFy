@@ -1,36 +1,142 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+🧠 TestiFy — Full-Stack Quiz & Assessment Platform
 
-## Getting Started
+A production-ready quiz platform built with Next.js that handles authentication, authorization, quiz creation, and real-time attempts — without falling apart at scale.
 
-First, run the development server:
+🚀 About The Project
 
-```bash
+TestiFy is a full-stack quiz and assessment platform designed to simulate real-world testing systems used in ed-tech, hiring platforms, and internal evaluations.
+
+It supports secure authentication, role-based access control (RBAC), an admin dashboard for quiz management, and dynamic quiz attempts stored persistently in MongoDB.
+
+This is not a “toy project”. This is architecture-first, interview-grade stuff.
+
+✨ Key Features
+🔐 Authentication & Authorization
+
+Secure login & signup
+
+Role-Based Access Control (RBAC)
+
+Admin → Create & manage quizzes
+
+User → Attempt quizzes & view results
+
+🛠 Admin Panel
+
+Create questions with multiple options
+
+Define correct answers
+
+Manage quizzes without touching the DB directly (as it should be)
+
+📝 Quiz System
+
+Dynamic quiz rendering
+
+User attempts tracked per quiz
+
+Answer validation & scoring logic
+
+Attempts stored in MongoDB for analytics & history
+
+🧱 Full-Stack Architecture
+
+Frontend + Backend in Next.js
+
+API routes with proper data flow
+
+Clean separation of concerns
+
+🧑‍💻 Tech Stack
+
+Frontend
+
+Next.js (App Router)
+
+React
+
+TypeScript
+
+Tailwind CSS
+
+Backend
+
+Next.js API Routes
+
+MongoDB
+
+Mongoose
+
+Auth & Security
+
+Authentication (Credentials / JWT based)
+
+RBAC implementation
+
+🗂 Project Structure (High Level)
+testify/
+├── app/            # Next.js App Router
+├── components/     # Reusable UI components
+├── models/         # Mongoose schemas
+├── api/            # Backend API routes
+├── lib/            # Utilities & helpers
+├── styles/         # Global styles
+└── README.md
+
+⚙️ Getting Started
+1️⃣ Clone the repo
+git clone https://github.com/your-username/testify.git
+cd testify
+
+2️⃣ Install dependencies
+npm install
+
+3️⃣ Environment variables
+
+Create a .env.local file:
+
+MONGODB_URI=your_mongodb_connection_string
+NEXTAUTH_SECRET=your_secret
+NEXTAUTH_URL=http://localhost:3000
+
+4️⃣ Run the project
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+🎯 Why This Project Matters
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+This project demonstrates:
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Real-world full-stack thinking
 
-## Learn More
+Secure auth + RBAC (not just UI buttons pretending to be secure)
 
-To learn more about Next.js, take a look at the following resources:
+Database-driven dynamic features
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Scalable architecture suitable for SaaS or ed-tech platforms
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+If you’re an interviewer:
+👉 Yes, this is intentional design.
+👉 No, this isn’t copied from a tutorial.
 
-## Deploy on Vercel
+🔮 Future Improvements
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Timed quizzes
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Analytics dashboard
+
+Question randomization
+
+Leaderboards
+
+OAuth (Google / GitHub)
+
+Server Actions optimization
+
+🤝 Contributing
+
+PRs are welcome. Open an issue if you find a bug or want to suggest an improvement.
+
+📬 Contact
+
+Built by Rishav
+If this project caught your eye — that was the point 😉
