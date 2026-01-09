@@ -1,36 +1,163 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# TestiFy — Full-Stack Quiz & Assessment Platform
+
+A production-ready quiz platform built with **Next.js** that handles authentication, authorization, quiz creation, and real-time attempts — without falling apart at scale.
+
+---
+
+## About The Project
+
+**TestiFy** is a full-stack quiz and assessment platform designed to simulate real-world testing systems used in ed-tech, hiring platforms, and internal evaluations.
+
+It supports **secure authentication**, **role-based access control (RBAC)**, an **admin dashboard for quiz management**, and **dynamic quiz attempts** stored persistently in **MongoDB**.
+
+This is not a “toy project”.
+This is **architecture-first, interview-grade** stuff.
+
+---
+
+## Key Features
+
+### Authentication & Authorization
+
+* Secure login & signup
+* Role-Based Access Control (RBAC)
+
+  * **Admin** → Create & manage quizzes
+  * **User** → Attempt quizzes & view results
+
+### Admin Panel
+
+* Create questions with multiple options
+* Define correct answers
+* Manage quizzes without touching the DB directly (as it should be)
+
+### Quiz System
+
+* Dynamic quiz rendering
+* User attempts tracked per quiz
+* Answer validation & scoring logic
+* Attempts stored in MongoDB for analytics & history
+
+### Full-Stack Architecture
+
+* Frontend + Backend in Next.js
+* API routes with proper data flow
+* Clean separation of concerns
+
+---
+
+## Tech Stack
+
+### Frontend
+
+* Next.js (App Router)
+* React
+* TypeScript
+* Tailwind CSS
+
+### Backend
+
+* Next.js API Routes
+* Node.js
+* MongoDB
+* Mongoose
+
+### Auth & Security
+
+* Authentication (Credentials / JWT based)
+* RBAC implementation
+
+---
+
+## Project Structure (High Level)
+
+```txt
+testify/
+├── app/             # Next.js App Router (pages, layouts, routes)
+├── assets/          # Static assets (images, icons, etc.)
+├── components/      # Reusable UI components
+├── context/         # React Contexts (auth, global state)
+├── dbConnect/       # MongoDB connection logic
+├── models/          # Mongoose schemas & models
+├── public/          # Public static files
+├── .gitignore
+├── README.md
+├── eslint.config.mjs
+├── next.config.ts
+├── package.json
+├── package-lock.json
+├── postcss.config.mjs
+└── tsconfig.json
+```
+
+---
 
 ## Getting Started
 
-First, run the development server:
+### Clone the repo
+
+```bash
+git clone https://github.com/your-username/testify.git
+cd testify
+```
+
+### Install dependencies
+
+```bash
+npm install
+```
+
+### Environment variables
+
+Create a `.env.local` file:
+
+```env
+MONGO_URLI=your_mongodb_connection_string
+TOKEN_PASS=your_secret
+```
+
+### Run the project
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Why This Project Matters
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+This project demonstrates:
 
-## Learn More
+* Real-world full-stack thinking
+* Secure auth + RBAC (not just UI buttons pretending to be secure)
+* Database-driven dynamic features
+* Scalable architecture suitable for SaaS or ed-tech platforms
 
-To learn more about Next.js, take a look at the following resources:
+If you’re an interviewer:
+👉 Yes, this is intentional design.
+👉 No, this isn’t copied from a tutorial.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+---
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Future Improvements
 
-## Deploy on Vercel
+* Timed quizzes
+* Analytics dashboard
+* Question randomization
+* Leaderboards
+* OAuth (Google / GitHub)
+* Server Actions optimization
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+---
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Contributing
+
+PRs are welcome.
+Open an issue if you find a bug or want to suggest an improvement.
+
+---
+
+## Contact
+
+Built by **Rishav**
+If this project caught your eye — that was the point 😉
