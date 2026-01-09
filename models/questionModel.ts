@@ -11,10 +11,6 @@ const QuestionSchema = new Schema({
         type: [String],
         required : true,
     },
-    catagory: {
-        type: String,
-        required : true,
-    },
     answerKey: {
         type: Number,
         required : true,

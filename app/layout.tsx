@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import AdminHeader from '@/components/Headers/AdminHeader'
 import AuthContextProvider from "@/context/AuthContextProvider";
 
 const geistSans = Geist({
@@ -26,6 +27,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <AuthContextProvider>
+        <AdminHeader />
       <body
         className={`${geistSans.variable} ${geistMono.variable} bg-gray-50 antialiased`}
       >

@@ -34,7 +34,7 @@ export default function AdminInputForm({ setQuestions }: propType) {
     }
 
     useEffect(() => {
-        if (question.questionName.length > 8 && question.answerOptions.length > 1 && question.correctAnswer.length > 1) {
+        if (question.questionName.length > 8 && question.answerOptions.length > 1 && question.correctAnswer.length > 0) {
             setCloseSubmit(false)
         }
         else {
