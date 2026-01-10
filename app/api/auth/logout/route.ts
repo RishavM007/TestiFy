@@ -1,8 +1,6 @@
 import connect from "@/dbConnect/dbConnect";
 import { NextRequest, NextResponse } from "next/server";
 
-
-
 export async function GET() {
     try {
         await connect()

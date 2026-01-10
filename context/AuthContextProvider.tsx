@@ -31,8 +31,9 @@ export default function AuthContextProvider({ children }: { children: ReactNode 
         body: JSON.stringify({email,password})
       })
 
-      const data = await requestBody.json(); 
-      if (!data) {
+      const data = await requestBody.json();
+      
+      if (!data.ok) {
         alert("Login Failed");
         return
       }
@@ -54,7 +55,7 @@ export default function AuthContextProvider({ children }: { children: ReactNode 
       const requestBody = await fetch('/api/auth/logout', {
         method: "GET"
       })
-      if (!requestBody) {
+      if (!requestBody.ok) {
         alert("Logout Failed")
       }
       
