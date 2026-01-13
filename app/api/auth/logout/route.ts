@@ -10,7 +10,6 @@ export async function GET() {
 
         return response;
         
-        
     } catch (error) {
         return NextResponse.json({ message: "Logout Failed" }, { status : 500})
     }

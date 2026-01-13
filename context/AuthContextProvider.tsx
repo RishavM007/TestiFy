@@ -26,7 +26,7 @@ export default function AuthContextProvider({ children }: { children: ReactNode 
       const requestBody = await fetch('/api/auth/login', {
         method: "POST",
         headers: {
-          "Contect-Type": "application/json",
+          "Content-Type": "application/json",
         },
         body: JSON.stringify({email,password})
       })
