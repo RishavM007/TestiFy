@@ -7,6 +7,7 @@ interface questionArrayType {
   questionName: string,
   answerOptions: string[],
   correctAnswer: string,
+  questionCatagory : string,
 }
 
 export default function page() {

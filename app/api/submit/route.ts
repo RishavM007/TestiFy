@@ -15,12 +15,12 @@ export async function POST(request: NextRequest) {
                 { status: 400 }
             );
         }
-
         
         const formattedQuestions = responseBody.map((q) => ({
             question: q.questionName,
             options: q.answerOptions.filter( (opt : string) => opt.trim() !== ""),
             answerKey: Number(q.correctAnswer),
+            category : q.questionCatagory
         }));
 
 

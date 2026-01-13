@@ -1,23 +1,17 @@
 'use client';
+import QuestionCatagory from '@/components/User/QuestionCatagory';
+import QuestionSolvingArea from '@/components/User/QuestionSolvingArea';
 import React, { useContext, useEffect, useState } from 'react'
-import AuthContext from '@/context/AuthContext'
 
 interface QuestionType {
-    question: string,
-    options: string[],
-    answerKey: number,
+      question: string,
+    answerOptions: string[],
+    correctAnswer: string,
+    category: string,
 }
 
 export default function page() {
-
-    const authCont = useContext(AuthContext)
     const [question, SetQuestions] = useState<QuestionType[] | null>(null)
-
-    if (!authCont) {
-        throw new Error("Auth context isnt available")
-    }
-
-    const { logout } = authCont;
 
     async function getQuestions() {
         const body = await fetch('/api/get-questions', {
@@ -27,34 +21,23 @@ export default function page() {
             },
         }
         )
-
         const data = await body.json();
         SetQuestions(data.data);
-        console.log(data);
-
     }
 
     useEffect(() => {
         getQuestions()
     }, [])
-    console.log(question);
+
+    // console.log(question);
+    
 
 
     return (
         <>
-            <div className='h-screen bg-[#131313] flex flex-col text-white gap-5 justify-center items-center'>
-                <h2>This is user Dashboard</h2>
-                <div className='flex flex-col gap-5'>
-                {question?.map((p, i) => {
-                    return (
-                        <div key={i} className='text-white '>
-                            <p>{p.question}</p>
-                        </div>
-
-                    )
-                })}
-                      </div>
-            </div>
+            <QuestionCatagory questions={question} />
+            <QuestionSolvingArea />
+            
         </>
     )
 }
