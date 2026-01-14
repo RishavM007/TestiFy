@@ -28,10 +28,11 @@ interface QuestionType {
 }
 
 interface questionArrayType {
-    questions: QuestionType[] | null
+    questions: QuestionType[] | null,
+    setQuestionCat : React.Dispatch<React.SetStateAction<string>>,
 }
 
-export default function QuestionCatagory({ questions }: questionArrayType) {
+export default function QuestionCatagory({ questions , setQuestionCat }: questionArrayType) {
 
     console.log(questions);
 
@@ -73,7 +74,7 @@ export default function QuestionCatagory({ questions }: questionArrayType) {
                 {categories.map((cat, i) => {
                     return (
                         <li
-                            className='h-10 border rounded-lg bg-emerald-600 hover:bg-emerald-800 text-white  px-4 flex items-center justify-start w-fit gap-5 cursor-pointer'
+                         key={i} onMouseDown={()=>{setQuestionCat(cat.name)}}  className='h-10 border rounded-full bg-emerald-600 hover:bg-emerald-800 text-white  px-4 flex items-center justify-start w-fit gap-5 cursor-pointer'
                         >
                             <span className='text-lg'>{cat.icon}</span>
                             <span>{cat.name}</span>

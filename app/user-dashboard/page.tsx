@@ -12,6 +12,7 @@ interface QuestionType {
 
 export default function page() {
     const [question, SetQuestions] = useState<QuestionType[] | null>(null)
+    const [questionCat,setQuestionCat] = useState<string>("")
 
     async function getQuestions() {
         const body = await fetch('/api/get-questions', {
@@ -35,8 +36,11 @@ export default function page() {
 
     return (
         <>
-            <QuestionCatagory questions={question} />
-            <QuestionSolvingArea />
+            <section className='flex flex-col lg:flex-row justify-center items-center'>
+            <QuestionCatagory questions={question} setQuestionCat={setQuestionCat} />
+            <QuestionSolvingArea questions={question} questionCat={questionCat}/>
+
+            </section>
             
         </>
     )
